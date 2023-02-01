@@ -17,9 +17,9 @@ class Solution:
             return True
         if not isBalancedHelp(root)[1]:
             return False
-        else:
-            if not self.isBalanced(root.left) or not self.isBalanced(root.right):
-                return False
+        # else:
+        if not self.isBalanced(root.left) or not self.isBalanced(root.right):
+            return False
             # if not self.isBalanced(root.right):
             #     return False
         return True
