@@ -11,17 +11,17 @@ class Solution:
                 return 0, True
             left, right = isBalancedHelp(root.left), isBalancedHelp(root.right)
             if abs(left[0] - right[0]) > 1:
-                return max(left[0], right[0]) + 1, False
+                return 0, False
             return max(left[0], right[0]) + 1, True
         if not root:
             return True
         if not isBalancedHelp(root)[1]:
             return False
         else:
-            if not self.isBalanced(root.left):
+            if not self.isBalanced(root.left) or not self.isBalanced(root.right):
                 return False
-            if not self.isBalanced(root.right):
-                return False
+            # if not self.isBalanced(root.right):
+            #     return False
         return True
     # def height(self, root):
     #     if not root:
