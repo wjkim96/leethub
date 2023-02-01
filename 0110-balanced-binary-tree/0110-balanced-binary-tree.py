@@ -6,23 +6,41 @@
 #         self.right = right
 class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
-        def isBalancedHelp(root):
+        def sample(root):
             if not root:
-                return 0, True
-            left, right = isBalancedHelp(root.left), isBalancedHelp(root.right)
-            if abs(left[0] - right[0]) > 1:
-                return 0, False
-            return max(left[0], right[0]) + 1, True
-        if not root:
-            return True
-        if not isBalancedHelp(root)[1]:
-            return False
-        # else:
-        if not self.isBalanced(root.left) or not self.isBalanced(root.right):
-            return False
-            # if not self.isBalanced(root.right):
-            #     return False
-        return True
+                return 0
+            lh = sample(root.left)
+            if lh == -1:
+                return -1
+            rh = sample(root.right)
+            if rh == -1:
+                return -1
+            if abs(lh-rh)>1:
+                return -1
+            else: 
+                return 1+max(lh,rh)
+            
+        return sample(root)!=-1
+# class Solution:
+    
+#     def isBalanced(self, root: Optional[TreeNode]) -> bool:
+#         def isBalancedHelp(root):
+#             if not root:
+#                 return 0, True
+#             left, right = isBalancedHelp(root.left), isBalancedHelp(root.right)
+#             if abs(left[0] - right[0]) > 1:
+#                 return 0, False
+#             return max(left[0], right[0]) + 1, True
+#         if not root:
+#             return True
+#         if not isBalancedHelp(root)[1]:
+#             return False
+#         # else:
+#         if not self.isBalanced(root.left) or not self.isBalanced(root.right):
+#             return False
+#             # if not self.isBalanced(root.right):
+#             #     return False
+#         return True
     # def height(self, root):
     #     if not root:
     #         return 0
