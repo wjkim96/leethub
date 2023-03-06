@@ -23,7 +23,7 @@ class Solution:
             post.next = v
             v.next = s
             v = tmp
-
+        ans = sent.next
         return sent.next
         
         
