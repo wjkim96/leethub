@@ -1,12 +1,14 @@
 class Solution:
     def help(self, heights, prev, i, j, visit):
-        if i <0 or j < 0:
+        if "Pacific" in visit and "Atlantic" in visit:
+            return
+        elif i <0 or j < 0:
             visit.add("Pacific")
             return
         elif i >= len(heights) or j >= len(heights[0]):
             visit.add("Atlantic")
             return
-        if heights[i][j] > prev or (i,j) in visit:
+        elif heights[i][j] > prev or (i,j) in visit:
             return
         else:
             prev = heights[i][j]
